@@ -6,7 +6,6 @@ export const fetchWeather = createAsyncThunk(
         try{
             const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&lang=ru&appid=ce6a5b2a2396442d0b0c9da35a6a1699`
             const response = await fetch(url)
-            console.log(response)
             if(!response.ok) {
                 throw new Error("Server error!")
             }

@@ -1,10 +1,11 @@
-import Weather from "./Weather";
+import Weather from "./weather/Weather";
+import {Container} from "@mui/material";
 
 function App() {
   return (
-    <div className="App">
-      <Weather/>
-    </div>
+      <Container maxWidth={"md"}>
+          <Weather/>
+      </Container>
   );
 }
 

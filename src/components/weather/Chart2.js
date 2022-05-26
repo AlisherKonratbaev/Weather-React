@@ -5,30 +5,25 @@ function Chart2(props) {
     const [values, setValues] = useState({
         series: [
             {
-                name: props.name,
+                name: "t \'C",
                 data: props.data
             }
         ],
         options: {
             chart: {
-                height: 650,
+                height: 350,
                 type: 'area'
             },
             dataLabels: {
-                enabled: false
+                enabled: true
             },
             stroke: {
                 curve: 'smooth'
             },
             xaxis: {
-                type: 'datetime',
-                categories: props.dateTime
+                categories: props.dateTime,
             },
-            tooltip: {
-                x: {
-                    format: 'dd/MM/yy HH:mm'
-                },
-            },
+
         },
     })
     const {series, options} = values;
@@ -38,7 +33,6 @@ function Chart2(props) {
             ...values,
             series: [
                 {
-                    name: props.name,
                     data: props.data
                 }
             ],
@@ -57,7 +51,7 @@ function Chart2(props) {
                 options={options}
                 series={series}
                 type="area"
-                height={650}>
+                height={350}>
             </ReactApexChart>
         </div>
     );

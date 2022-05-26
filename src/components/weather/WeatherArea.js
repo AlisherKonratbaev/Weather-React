@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import ReactApexChart from "react-apexcharts";
 
-function Chart2(props) {
+function WeatherArea(props) {
     const [values, setValues] = useState({
         series: [
             {
@@ -11,7 +11,7 @@ function Chart2(props) {
         ],
         options: {
             chart: {
-                height: 350,
+                height: 300,
                 type: 'area'
             },
             dataLabels: {
@@ -38,7 +38,6 @@ function Chart2(props) {
             ],
             options: {
                 xaxis: {
-                    type: 'datetime',
                     categories: props.dateTime
                 },
             }
@@ -51,10 +50,10 @@ function Chart2(props) {
                 options={options}
                 series={series}
                 type="area"
-                height={350}>
+                height={300}>
             </ReactApexChart>
         </div>
     );
 }
 
-export default Chart2;
+export default WeatherArea;

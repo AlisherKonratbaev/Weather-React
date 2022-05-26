@@ -19,6 +19,7 @@ export const fetchWeather = createAsyncThunk(
 )
 const initialState = {
     weather: [],
+    cityInfo: {},
     status: null,
     error: null,
 }

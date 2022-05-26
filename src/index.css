@@ -1,5 +1,5 @@
 .weather-card_wrap{
-    margin-top: 50px;
+    margin-top: 20px;
     display: flex;
     justify-content: space-between;
 }
@@ -13,5 +13,15 @@
     cursor: pointer;
 }
 .weather-card_item.active{
-    background: #3f51b5;
+    background: #607d8b;
+}
+.weather-info{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    padding: 20px 10px;
+    justify-content: space-between;
+    background-color: antiquewhite;
+    border-radius: 20px;
+    margin-bottom: 10px;
 }

@@ -8,9 +8,10 @@ function SearchInput(props) {
     const searchHandler = (e) => {
         e.preventDefault();
         dispatch(fetchWeather(text.toLowerCase()))
+        setText("");
     }
     return (
-        <Box component={"form"} onSubmit={searchHandler} sx={{display:"flex", mb:"100px"}}>
+        <Box component={"form"} onSubmit={searchHandler} sx={{display:"flex", mb:"50px"}}>
             <TextField id="outlined-basic" label="Search city" variant="outlined"
                        sx={{width:"100%"}}
                        value={text}

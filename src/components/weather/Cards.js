@@ -4,10 +4,12 @@ import {Box, Container, Typography} from "@mui/material";
 function Cards(props) {
     const {fullWeather, chooseCardHandler} = props
     const [active, setActive] = useState(0)
+
     const boxClickHandler = (item, index) => {
         setActive(index);
         chooseCardHandler(item);
     }
+
     useEffect(() => {
         setActive(0);
     }, [fullWeather])
@@ -17,8 +19,8 @@ function Cards(props) {
                 return (
                     <Box className={index === active ? "weather-card_item active": "weather-card_item"} key={index} component="div" onClick={() => {boxClickHandler(item, index)}}>
                         <Typography component="h4" variant="p">{item.day}</Typography>
-                        <Typography component="p" variant="p">27 t' C</Typography>
-                        <Typography component="p" variant="p">Ясно</Typography>
+                        <Typography component="p" variant="p">{item.currentWeather.mainTemp} t 'C</Typography>
+                        <Typography component="p" variant="p">{item.currentWeather.descriptions[0]}</Typography>
                     </Box>
                 )
             })}

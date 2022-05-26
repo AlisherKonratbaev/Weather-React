@@ -6,6 +6,7 @@ import SearchInput from "./SearchInput";
 import Cards from "./Cards";
 import MainInfo from "./MainInfo";
 
+
 const getDayAndMonth = (text) => {
     const date = new Date(text);
     return `${date.toLocaleString('default', {month: 'long'})} ${date.getDate()}`;
@@ -26,7 +27,7 @@ const getArithmetic = (arr) => {
 }
 
 function Weather(props) {
-    const {weather, status, error} = useSelector(state => state.weather)
+    const {weather: weatherApi, status, error} = useSelector(state => state.weather)
     const [fullWeather, setFullWeather] = useState([]);
     const [activeDay, setActiveDay] = useState("");
     const [options, setOptions] = useState({
@@ -39,12 +40,12 @@ function Weather(props) {
 
     useEffect(() => {
         if (status === 'resolved') {
-            let dayList = weather.list.map(item => getDayAndMonth(item.dt_txt))
+            let dayList = weatherApi.list.map(item => getDayAndMonth(item.dt_txt))
             let dayListSet = Array.from(new Set(dayList))
             let tempFullWeather = [];
             dayListSet.forEach(day => {
                 let step = {day: day, weather: []};
-                weather.list.forEach(item => {
+                weatherApi.list.forEach(item => {
                     if (getDayAndMonth(item.dt_txt) === day) {
                         step.weather.push(item)
                     }
@@ -55,25 +56,29 @@ function Weather(props) {
             chooseCardHandler(tempFullWeather[0])
             setFullWeather(tempFullWeather);
         }
-    }, [weather])
+    }, [weatherApi])
 
     const setMainTemp = (weather) => {
         weather.forEach(item => {
-            let tempList = item.weather.map(el => el.main.temp)
+            const tempList = item.weather.map(el => el.main.temp)
             const mainTemp = getArithmetic(tempList)
+
             const descriptions = Array.from(new Set(item.weather.map(el => el.weather[0].description)));
-            let windList = item.weather.map(el => el.wind.speed)
+            const windList = item.weather.map(el => el.wind.speed)
+
             const windSpeed = getArithmetic(windList)
-            let humidityList = item.weather.map(el => el.main.humidity)
+            const humidityList = item.weather.map(el => el.main.humidity)
+
             const humidity = getArithmetic(humidityList)
 
             item.currentWeather = {
-                mainTemp: mainTemp,
+                mainTemp,
                 descriptions,
                 windSpeed,
                 humidity,
             }
         })
+
         return weather;
     }
 
@@ -89,7 +94,7 @@ function Weather(props) {
     return (
         <div>
             <SearchInput/>
-            <MainInfo fullWeather={fullWeather} activeDay={activeDay} cityInfo={weather.city} />
+            <MainInfo fullWeather={fullWeather} activeDay={activeDay} cityInfo={weatherApi.city} />
             <WeatherArea {...options} />
             {fullWeather.length != 0 && <Cards fullWeather={fullWeather} chooseCardHandler={chooseCardHandler}/>}
 

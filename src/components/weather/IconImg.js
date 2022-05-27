@@ -6,6 +6,7 @@ import {
     WiDaySunny,
     WiDaySunnyOvercast,
     WiFog,
+    WiRainMix,
     WiSnow,
     WiThunderstorm
 } from "react-icons/wi";
@@ -16,25 +17,27 @@ function IconImg(props) {
     const getIcon = () => {
         switch (type) {
             case "ясно":
-                return <WiDaySunny />
+                return <WiDaySunny/>
             case "облачно с прояснениями":
-                return <WiDaySunnyOvercast />
+                return <WiDaySunnyOvercast/>
             case "небольшая облачность":
-                return <WiDayCloudy />
+                return <WiDayCloudy/>
             case "переменная облачность":
-                return <WiDaySunnyOvercast />
+                return <WiDaySunnyOvercast/>
             case "пасмурно":
-                return <WiCloudy />
+                return <WiCloudy/>
+            case "дождь":
+                return <WiRainMix/>
             case "небольшой дождь":
-                return <WiDayRainMix />
+                return <WiDayRainMix/>
             case "туман":
-                return <WiFog />
+                return <WiFog/>
             case "снег":
-                return <WiSnow />
+                return <WiSnow/>
             case "гроза":
-                return <WiThunderstorm />
+                return <WiThunderstorm/>
             default:
-                return <WiDayCloudy />
+                return <WiDayCloudy/>
         }
     }
     return (

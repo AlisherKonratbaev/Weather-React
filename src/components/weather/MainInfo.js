@@ -45,7 +45,7 @@ function MainInfo(props) {
                 <Typography component="p" variant="p">Население: {cityInfo.population}</Typography>
                 <Typography component="p" variant="p">{activeDay}</Typography>
                 <Typography component="p" variant="p">{currentWeather.descriptions[0]}
-                    <br/> Местами: {currentWeather.descriptions.filter((des, i) => i !== 0).join(",")}
+                    <br/>{currentWeather.descriptions.length > 1 ?`Местами:` : ""}  {currentWeather.descriptions.filter((des, i) => i !== 0).join(",")}
                 </Typography>
             </Box>
         </Box>

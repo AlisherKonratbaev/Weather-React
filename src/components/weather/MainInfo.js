@@ -43,7 +43,7 @@ function MainInfo(props) {
                 <Typography sx={{mb:"10px"}} component="h5" variant="h5">{cityInfo.name}, {cityInfo.country}</Typography>
                 <Typography component="p" variant="p">Население: {cityInfo.population}</Typography>
                 <Typography component="p" variant="p">{activeDay}</Typography>
-                <Typography component="p" variant="p">{currentWeather.descriptions[0]}</Typography>
+                <Typography component="p" variant="p">{currentWeather.descriptions[0]} <br /> Местами: {currentWeather.descriptions.join(",")} </Typography>
             </Box>
         </Box>
     );

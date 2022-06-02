@@ -7,7 +7,7 @@ Chart visualization is implemented from the react-apexcharts library.
 React, Redux Toolkit Thunk, Material UI, react-icons
 
 ## Demo
-https://weather-iota-lyart.vercel.app/
+https://weather-react-mu.vercel.app/
 
 ## Technologies used
 React, Redux, Redux Toolkit Thunk, Material UI
